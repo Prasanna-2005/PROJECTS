@@ -76,30 +76,46 @@ try:
     lines_per_part = len(final_list) // num_col
     extra = len(final_list) % num_col
     
+    modify = 0   #extra =0 case also takes modify = 0
     if extra != 0:
-        lines_per_part += 1
-    
+        if(lines_per_part >= num_col):
+            lines_per_part += 1     #takes modify =0
+        else:
+            modify = 1
     partitions = []
+    if modify == 0:
+        for i in range(num_col):
+            l = i * lines_per_part
+            r = (i + 1) * lines_per_part
+            
+            if r >= len(final_list):
+                r = len(final_list) 
+            partitions.append(final_list[l:r])
+    else:  #modify==1
+        for i in range(num_col):
+            
+            if(i<=num_col //2):
+                modify_lines_per_part = lines_per_part +1
+                l = i * modify_lines_per_part
+                r = ((i + 1) * modify_lines_per_part if((i + 1) * modify_lines_per_part<= (len(final_list))) else len(final_list))
+
+            else:
+                modify_lines_per_part = lines_per_part - 1
+                l = i * modify_lines_per_part
+                r = ((i + 1) * modify_lines_per_part if((i + 1) * modify_lines_per_part<= (len(final_list))) else len(final_list))
+            partitions.append(final_list[l:r])
+       
     
-    for i in range(num_col):
-        l = i * lines_per_part
-        r = (i + 1) * lines_per_part
-        
-        if r >= len(final_list):
-            r = len(final_list)
-        
-        partitions.append(final_list[l:r])
-    
-    for j in range(lines_per_part):   #j iterates each line
-        for k in range(num_col):        #k iterates partition
-            if j < len(partitions[k]):      # used in last partition ---->check if line exists
+    for j in range(lines_per_part):
+        for k in range(num_col):
+            if j < len(partitions[k]):
                 print(partitions[k][j], end="   ")
-            else:       #if line does not exist add a empty line -
-                print(" " * len_per_line,end="   ")  #by  spaces so that it does not affect the alignment
+            else:
+                print(" " * len_per_line,end="   ")
         print()
     
     fileobj.close()
     
 except FileNotFoundError :
-    print("FILE IS MISSING !!! PLEASE UPLOAD IT AGAIN.")
+    print("FILE_NOT_FOUND")
 
