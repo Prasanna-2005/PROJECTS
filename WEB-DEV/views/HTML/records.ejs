@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="PRASANNA KUMAR M">
+    <title>RECORD MANAGEMENT</title>
+
+    <link rel="stylesheet" href="/static/CSS/style.css">
+</head>
+
+<body>
+    <nav style="display: flex">
+
+        <div id=div-reg-title class="title">
+            <h1 style="position: relative; left:240px;">RECORDS </h1>
+        </div>
+
+        <div id=home-link-div class="pos1">
+            <a href="/">
+                <h3>HOME</h3>
+            </a>
+        </div>
+        <div id=home-dow-div class="pos2">
+            <a href="/download">
+                <h3>DOWNLOAD</h3>
+            </a>
+        </div>
+        <div class="pos3">
+            <a href="/edit">
+                <h3>EDIT</h3>
+            </a>
+        </div>
+    </nav>
+    <hr>
+
+
+    <section id="display-form">
+
+        <abbr title="ANY FIELD">ENTER <b>ROLL/NAME/CLASS/SECTION</b></abbr><br>
+        <input type="text" name="val" id="val" onkeyup="searchRecord()">
+        OR
+        <input type="button" onclick="viewAllRecords()" value="VIEW ALL">
+
+    </section>
+
+    <div id="results"></div>
+    <script src="/static/JS/hello.js"></script>
+</body>
+
+</html>

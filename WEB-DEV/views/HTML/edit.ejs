@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="PRASANNA KUMAR M">
+    <title>EDIT RECORDS</title>
+
+    <link rel="stylesheet" href="/static/CSS/style.css">
+</head>
+
+<body>
+    <nav style="display: flex">
+
+        <div id=div-reg-title class="title">
+            <h1 style="position: relative; left:240px;">MANAGE RECORDS</h1>
+        </div>
+
+        <div id=home-link-div class="pos1">
+            <a href="/">
+                <h3>HOME</h3>
+            </a>
+        </div>
+        <div id=home-dow-div class="pos2">
+            <a href="/download">
+                <h3>DOWNLOAD</h3>
+            </a>
+        </div>
+        <div id=home-viewrecord-div class="pos3">
+            <a href="/records">
+                <h3>RECORDS</h3>
+            </a>
+        </div>
+
+    </nav>
+    <hr>
+    <hr>
+
+    <p><strong>
+            <h2>EDIT RECORDS :::</h2>
+        </strong></p>
+
+
+    <form id="up-form">
+        <label style="position:relative; bottom:5px;"
+            title="ROLL NO OF THE STUDENTS WHOSE CREDENTIALS TO BE EDITED"><em>ROLL NUMBER OF THE STUDENT WHOSE
+                CREDENTIALS TO BE EDITED:</em></label><br>
+        <input style="background-color: aquamarine; width:100px; height:9px;" type="text" name="roll" placeholder="ROLL"
+            maxlength="9" id="r-edit" pattern="^[0-9]{1,9}$" autocomplete="off" required
+            onkeydown="return (isNumber(event) ||event.keyCode===39||event.keyCode===40||event.keyCode===8);" />
+        <br><br>EDIT THE FIELD FOR ROLL_NUM:
+        <div id="rnum">
+        </div>
+        <br><br>
+
+
+        <section id="hid" class="hidden ">
+            <section id="r-s" class="dis">
+                <label><em>NEW ROLL NUM</em></label><br>
+                <input type="text" name="Roll" placeholder="ROLL" maxlength="9" id="roll-section" pattern="^[0-9]{1,9}$"
+                    autocomplete="off"
+                    onkeydown="return (isNumber(event) ||event.keyCode===39||event.keyCode===40||event.keyCode===8);" />
+
+            </section>
+
+            <section id="n-s" class="dis">
+
+                <label><em>NEW NAME</em></label><br>
+                <input type="text" name="Name" id="name-section" placeholder="NAME" maxlength="35" size="20"
+                    autocomplete="off" pattern="^(?=.*[a-zA-Z])[a-zA-Z\s.]+$" />
+
+            </section>
+
+
+            <section id="c-s" class="dis">
+                <label><em>NEW CLASS</em></label><br>
+                <select name="stud_class" id="class-section" autocomplete="off">
+                    <option value=""></option>
+                    <option value="I">I</option>
+                    <option value="II">II</option>
+                    <option value="III">III</option>
+                    <option value="IV">IV</option>
+                    <option value="V">V</option>
+                    <option value="VI">VI</option>
+                    <option value="VII">VII</option>
+                    <option value="VIII">VIII</option>
+                    <option value="IX">IX</option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                </select>
+
+            </section>
+
+
+
+            <section id="s-s" class="dis">
+
+                <label for="section-section">NEW SECTION</label><br>
+                <input type="text" name="Section" id="section-section" placeholder="A" autocomplete="off" maxlength="1"
+                    size="1" onkeydown="if (isNumber(event)||event.keyCode===32){return false;}"
+                    onkeyup="convertCaps(event);">
+
+            </section>
+            <br>
+            <input type="submit" value="CONFIRM">
+        </section>
+    </form>
+
+    <hr>
+    <hr>
+
+    <!-- DELETE_RECORD -->
+    <p><strong>
+            <h2>DELETE_RECORD:::</h2>
+        </strong></p>
+    <form id="form2">
+        <label style="position:relative; bottom:5px;"><em>ENTER FULL ROLL NUMBER</em></label><br>
+        <input style="background-color: aquamarine; width:100px; height:9px;" type="text" name="roll" placeholder="ROLL"
+            maxlength="9" id="roll-edit" pattern="^[0-9]{1,9}$" autocomplete="off" required
+            onkeydown="return (isNumber(event) ||event.keyCode===39||event.keyCode===40||event.keyCode===8);" />
+
+        <input style="background-color:aquamarine; " type="submit" value="DELETE">
+    </form>
+    <br>
+    <hr>
+
+    <script src="/static/JS/hello.js"></script>
+</body>
+
+</html>

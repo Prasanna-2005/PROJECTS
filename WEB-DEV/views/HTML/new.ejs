@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="PRASANNA KUMAR M">
+  <title>REGISTRATION PORTAL</title>
+  <!-- <base href="/"> -->
+  <link rel="stylesheet" href="/static/CSS/style.css">
+</head>
+
+<body>
+  <nav style="display: flex;">
+
+    <div id=div-reg-title class="title">
+      <h1>STUDENT REGISTRATION FORM </h1>
+    </div>
+
+    <div id=home-link-div class="pos1">
+      <a href="/">
+        <h3>HOME</h3>
+      </a>
+    </div>
+
+    <div id=home-viewrecord-div class="pos2">
+      <a href="/records">
+        <h3>RECORDS</h3>
+      </a>
+    </div>
+
+  </nav>
+  <hr>
+
+
+  <table id="tbl">
+    <form id="form1">
+      <tr>
+        <td> NAME : </td>
+        <td>
+          <input type="text" name="Name" id="Name" placeholder="NAME" required maxlength="35" size="20"
+            autocomplete="off" pattern="^(?=.*[a-zA-Z])[a-zA-Z\s.]+$" />
+
+        </td>
+      </tr>
+      <!-- 
+      onkeyup="return ! isNumber(event)"
+      <tr>
+        <td> Gender : </td>
+        <td> Male
+          <input type="radio" name="Gender" value="male" />
+          Female
+          <input type="radio" name="Gender" value="female" />
+        </td>
+      </tr>
+      <tr>
+        <td> AGE : </td>
+        <td>
+          <input type="text" name="age" pattern="^[0-9]{1,2}" title="ENTER CORRECT AGE" required />
+        </td>
+        
+      </tr>-->
+
+      <tr>
+        <td> ROLL NUMBER: </td>
+        <td>
+          <input type="text" name="Roll" placeholder="ROLL" maxlength="9" id="roll" pattern="^[0-9]{1,9}$"
+            autocomplete="off" required onkeydown="return (isNumber(event) || event.keyCode===37||
+            event.keyCode===39||event.keyCode===40||event.keyCode===8);" />
+        </td>
+      </tr>
+
+      <tr>
+        <td> CLASS: </td>
+        <td>
+          <select name="Class" id="class" required autocomplete="off">
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td>SECTION:</td>
+        <!-- allow only text-->
+        <td>
+          <input type="text" name="Section" placeholder="A" id="section" autocomplete="off" maxlength="1" size="1"
+            onkeydown="if (isNumber(event)||event.keyCode===32){return false;}" onkeyup="convertCaps(event);">
+        </td>
+      </tr>
+
+
+      <tr>
+        <td> </td>
+        <td>
+          <button id="SUBMIT" title="SUBMIT">SUBMIT</button>
+          <button type="reset" value="Reset" id="reset">Reset</button>
+          </div>
+        </td>
+      </tr>
+  </table>
+  </form>
+  <div id="response"></div>
+  <p id="para"></p>
+
+
+  <script src="/static/JS/hello.js"></script>
+</body>
+
+</html>
