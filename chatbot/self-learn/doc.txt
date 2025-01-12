@@ -1,0 +1,5 @@
+1. Have scrapped data ready
+2. Create intent.json basics like greetings ,thanks ,no reply..
+3. Extend by run intents_generator_from_intent.py
+4. Run train.py
+5. Run main.py 

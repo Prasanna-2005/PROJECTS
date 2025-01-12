@@ -1,0 +1,289 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "Good day",
+                "Hola",
+                "Good day",
+                "Namaste",
+                "yo",
+                "What's up?",
+                "How's it going?",
+                "Greetings",
+                "Salutations",
+                "Howdy"
+            ],
+            "responses": [
+                "Hey :-)",
+                "Hello, thanks for visiting",
+                "Hi there, what can I do for you?",
+                "Hi there, how can I help?",
+                "Hello! How can I assist you today?",
+                "Hi! What brings you here today?",
+                "Greetings! How can I make your day better?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Get lost",
+                "Till next time",
+                "bbye",
+                "Catch you later",
+                "Take care",
+                "I'm off",
+                "See ya"
+            ],
+            "responses": [
+                "See you later, thanks for visiting",
+                "Have a nice day",
+                "Bye! Come back again soon.",
+                "Take care! Looking forward to your next visit.",
+                "Goodbye! Don't hesitate to reach out if you need anything.",
+                "Farewell! Have a great day ahead."
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Thank's a lot!",
+                "I appreciate it",
+                "Thanks for your help",
+                "You're awesome",
+                "Thanks for the info",
+                "Many thanks"
+            ],
+            "responses": [
+                "Happy to help!",
+                "Any time!",
+                "My pleasure",
+                "You're welcome! If you have more questions, feel free to ask.",
+                "Glad I could assist you!",
+                "No problem! I'm here to help."
+            ]
+        },
+        {
+            "tag": "payments",
+            "patterns": [
+                "Do you take credit cards?",
+                "Do you accept Mastercard?",
+                "Can I pay with Paypal?",
+                "Are you cash only?",
+                "What payment methods do you accept?",
+                "Can I use my debit card?",
+                "Is cash accepted?",
+                "Do you accept American Express?",
+                "Can I pay with cryptocurrency?"
+            ],
+            "responses": [
+                "We accept VISA, UPI, Mastercard, and Paypal.",
+                "We accept most major credit cards and Paypal.",
+                "Yes, we accept cash, credit cards, and Paypal.",
+                "You can pay using various methods including credit cards and Paypal.",
+                "We also accept American Express and Discover cards.",
+                "Currently, we do not accept cryptocurrency."
+            ]
+        },
+        {
+            "tag": "customer_support",
+            "patterns": [
+                "How can I contact customer support?",
+                "I need assistance with my order",
+                "What are your support hours?",
+                "Can I chat with someone?",
+                "How do I reach customer service?",
+                "Is there a phone number for support?",
+                "Do you have a live chat option?",
+                "What if I have a problem with my order?"
+            ],
+            "responses": [
+                "Our customer support team is here to assist you. You can reach out to us through our website's live chat, email, or phone. We're ready to help!",
+                "If you have any questions or need assistance with your order, please don't hesitate to contact our dedicated customer support team."
+            ]
+        },
+        {
+            "tag": "reviews",
+            "patterns": [
+                "Can you share customer reviews?",
+                "What do customers say about your products?",
+                "Do you have any customer testimonials?",
+                "Can I read reviews from other customers?",
+                "What's the overall rating of your products?",
+                "How do customers rate your products?",
+                "Are there any reviews from satisfied customers?",
+                "Can you show me some customer feedback?",
+                "What do customers like about your products?",
+                "Are there any negative reviews?"
+            ],
+            "responses": [
+                "Our customers have shared fantastic reviews . You can find authentic reviews on our website to learn about their experiences.",
+                "We're proud to have received positive feedback from our satisfied customers. Check out the reviews section on our website for firsthand testimonials.",
+                "Our customers rave about our products, citing their high quality and excellent customer service.",
+                "You can read reviews from other customers on our website, and see why they love our products.",
+                "We're committed to providing the best possible experience for our customers, and our reviews reflect that.",
+                "We're proud to have a good customer satisfaction rate, based on reviews and feedback from our customers.",
+                "Our customers appreciate our attention to detail and commitment to quality, and we're grateful for their feedback.",
+                "We're always looking for ways to improve, and we appreciate any feedback our customers can provide.",
+                "While we strive for perfection, we're not perfect. We appreciate any feedback our customers can provide, and we'll do our best to address any concerns."
+            ]
+        },
+        {
+            "tag": "Products",
+            "patterns": [
+                "What products do you have?",
+                "Can you show me your product list?",
+                "What items are available?",
+                "What are you selling?",
+                "Tell me about your products",
+                "What's in your inventory?",
+                "Show me what you offer",
+                "Could you display your current merchandise?",
+                "Provide an overview of your product range",
+                "I'm interested in browsing your catalog",
+                "What merchandise are currently in stock?",
+                "Give me a rundown of your product lineup",
+                "What selection do you currently have?",
+                "I'd like to see your full product inventory",
+                "What collection are you offering right now?"
+            ],
+            "responses": [
+                "We have 129 amazing products across various categories. Would you like to explore them?",
+                "Our extensive catalog features 129 unique items spanning 28 categories. Some standout products include Apple iPhone 15 Pro, Nike Air Max 270, Samsung QLED 4K TV."
+            ]
+        },
+        {
+            "tag": "BestPrice",
+            "patterns": [
+                "Which product has the lowest price?",
+                "What's the cheapest item?",
+                "I want the most affordable product",
+                "Show me the best-priced item",
+                "What can I buy for the least money?",
+                "Lowest price product",
+                "Budget-friendly options",
+                "What's your most economical offering?",
+                "I'm looking for the most wallet-friendly product",
+                "Which item provides the best value for money?",
+                "Can you recommend something at the lowest price point?",
+                "What's the most cost-effective item in your inventory?",
+                "Show me the most budget-conscious option",
+                "I need the most inexpensive product available",
+                "What can I purchase without breaking the bank?"
+            ],
+            "responses": [
+                "Our 3 most affordable products are: Canon EOS Rebel T7, Tide Pods Laundry Detergent, The Girl on the Train by Paula Hawkins. Prices start at $12.85.",
+                "Looking to save? Check out Canon EOS Rebel T7, Tide Pods Laundry Detergent, The Girl on the Train by Paula Hawkins. These are our top budget-friendly options!"
+            ]
+        },
+        {
+            "tag": "MaxDiscount",
+            "patterns": [
+                "What has the biggest discount?",
+                "Which product is most discounted?",
+                "Highest discount available",
+                "Show me the best deal",
+                "Maximum discount item",
+                "Where can I save the most?",
+                "Best bargain",
+                "Which product offers the most significant price reduction?",
+                "I'm searching for the most massive markdown",
+                "What item has the steepest discount?",
+                "Show me the most dramatically reduced product",
+                "Where can I find the most substantial savings?",
+                "Which product provides the most impressive price cut?",
+                "I want the deal with the maximum percentage off",
+                "What's your most heavily discounted item?"
+            ],
+            "responses": [
+                "Our top 3 discounted products are: KitchenAid Artisan Stand Mixer, The Girl on the Train by Paula Hawkins, Maui Jim Red Sands. Discounts go up to 50.0% !",
+                "The biggest savings are on KitchenAid Artisan Stand Mixer, The Girl on the Train by Paula Hawkins, Maui Jim Red Sands. Don't miss these great deals!"
+            ]
+        },
+        {
+            "tag": "Soon_ending",
+            "patterns": [
+                "Which deals are ending soon?",
+                "What promotions are about to expire?",
+                "Quick deals running out",
+                "Urgent discounts",
+                "Limited-time offers",
+                "Ending soon sales",
+                "Hurry before it's gone",
+                "What time-sensitive deals do you have?",
+                "Which promotions are about to close?",
+                "I want to catch expiring offers",
+                "Show me deals on the verge of ending",
+                "What limited-time discounts are available?",
+                "Which bargains are disappearing soon?",
+                "I'm looking for last-chance deals",
+                "What offers are about to vanish?"
+            ],
+            "responses": [
+                "Time is running out! The Samsung QLED 4K TV has just 1 days remaining on its incredible discount.",
+                "Don't miss out! Our Samsung QLED 4K TV deal is about to expire in just 1 days."
+            ]
+        },
+        {
+            "tag": "BestRated",
+            "patterns": [
+                "What are your top-rated products?",
+                "Show me the highest-rated items",
+                "Which products have the best reviews?",
+                "Most recommended products",
+                "Top-rated selections",
+                "Highly recommended items",
+                "Best customer favorites",
+                "What products are receiving the most praise?",
+                "Which items have the most impressive customer feedback?",
+                "Show me the cream of the crop",
+                "What are customers raving about?",
+                "Which products have the most stellar reputation?",
+                "Give me the most acclaimed items",
+                "What products are consistently getting 5-star reviews?",
+                "Show me the most celebrated merchandise"
+            ],
+            "responses": [
+                "Our top-rated products are: Hoka One One Running Shoes, Adidas Ultraboost Running Shoes, Sony WH-1000XM5 Headphones. The highest rating is 5.0!",
+                "Customers love Hoka One One Running Shoes, Adidas Ultraboost Running Shoes, Sony WH-1000XM5 Headphones. These products have outstanding feedback!"
+            ]
+        },
+        {
+            "tag": "Category",
+            "patterns": [
+                "What categories do you have?",
+                "Show me product categories",
+                "List of product types",
+                "What kinds of products are available?",
+                "Different product categories",
+                "What types of items do you sell?",
+                "Product category breakdown",
+                "Items?",
+                "Products?",
+                "What merchandise classifications do you offer?",
+                "Provide an overview of your product classifications",
+                "What variety of product lines are in your inventory?",
+                "Show me the different types of merchandise",
+                "What product segments do you cover?",
+                "Give me a breakdown of your product ecosystem",
+                "What range of product categories can I explore?",
+                "Describe the breadth of your product portfolio"
+            ],
+            "responses": [
+                "We offer products across 28 categories. Something for everyone!",
+                "Our diverse product range spans 28 unique categories, including electronics, footwear, watches and more."
+            ]
+        }
+    ]
+}

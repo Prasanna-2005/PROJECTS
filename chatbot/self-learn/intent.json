@@ -1,0 +1,143 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "Good day",
+                "Hola",
+                "Good day",
+                "Namaste",
+                "yo",
+                "What's up?",
+                "How's it going?",
+                "Greetings",
+                "Salutations",
+                "Howdy"
+            ],
+            "responses": [
+                "Hey :-)",
+                "Hello, thanks for visiting",
+                "Hi there, what can I do for you?",
+                "Hi there, how can I help?",
+                "Hello! How can I assist you today?",
+                "Hi! What brings you here today?",
+                "Greetings! How can I make your day better?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you later",
+                "Goodbye",
+                "Get lost",
+                "Till next time",
+                "bbye",
+                "Catch you later",
+                "Take care",
+                "I'm off",
+                "See ya"
+            ],
+            "responses": [
+                "See you later, thanks for visiting",
+                "Have a nice day",
+                "Bye! Come back again soon.",
+                "Take care! Looking forward to your next visit.",
+                "Goodbye! Don't hesitate to reach out if you need anything.",
+                "Farewell! Have a great day ahead."
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Thank's a lot!",
+                "I appreciate it",
+                "Thanks for your help",
+                "You're awesome",
+                "Thanks for the info",
+                "Many thanks"
+            ],
+            "responses": [
+                "Happy to help!",
+                "Any time!",
+                "My pleasure",
+                "You're welcome! If you have more questions, feel free to ask.",
+                "Glad I could assist you!",
+                "No problem! I'm here to help."
+            ]
+        },
+        {
+            "tag": "payments",
+            "patterns": [
+                "Do you take credit cards?",
+                "Do you accept Mastercard?",
+                "Can I pay with Paypal?",
+                "Are you cash only?",
+                "What payment methods do you accept?",
+                "Can I use my debit card?",
+                "Is cash accepted?",
+                "Do you accept American Express?",
+                "Can I pay with cryptocurrency?"
+            ],
+            "responses": [
+                "We accept VISA, UPI, Mastercard, and Paypal.",
+                "We accept most major credit cards and Paypal.",
+                "Yes, we accept cash, credit cards, and Paypal.",
+                "You can pay using various methods including credit cards and Paypal.",
+                "We also accept American Express and Discover cards.",
+                "Currently, we do not accept cryptocurrency."
+            ]
+        },
+        {
+            "tag": "customer_support",
+            "patterns": [
+                "How can I contact customer support?",
+                "I need assistance with my order",
+                "What are your support hours?",
+                "Can I chat with someone?",
+                "How do I reach customer service?",
+                "Is there a phone number for support?",
+                "Do you have a live chat option?",
+                "What if I have a problem with my order?"
+            ],
+            "responses": [
+                "Our customer support team is here to assist you. You can reach out to us through our website's live chat, email, or phone. We're ready to help!",
+                "If you have any questions or need assistance with your order, please don't hesitate to contact our dedicated customer support team."
+            ]
+        },
+        {
+            "tag": "reviews",
+            "patterns": [
+                "Can you share customer reviews?",
+                "What do customers say about your products?",
+                "Do you have any customer testimonials?",
+                "Can I read reviews from other customers?",
+                "What's the overall rating of your products?",
+                "How do customers rate your products?",
+                "Are there any reviews from satisfied customers?",
+                "Can you show me some customer feedback?",
+                "What do customers like about your products?",
+                "Are there any negative reviews?"
+            ],
+            "responses": [
+                "Our customers have shared fantastic reviews . You can find authentic reviews on our website to learn about their experiences.",
+                "We're proud to have received positive feedback from our satisfied customers. Check out the reviews section on our website for firsthand testimonials.",
+                "Our customers rave about our products, citing their high quality and excellent customer service.",
+                "You can read reviews from other customers on our website, and see why they love our products.",
+                "We're committed to providing the best possible experience for our customers, and our reviews reflect that.",
+                "We're proud to have a good customer satisfaction rate, based on reviews and feedback from our customers.",
+                "Our customers appreciate our attention to detail and commitment to quality, and we're grateful for their feedback.",
+                "We're always looking for ways to improve, and we appreciate any feedback our customers can provide.",
+                "While we strive for perfection, we're not perfect. We appreciate any feedback our customers can provide, and we'll do our best to address any concerns."
+            ]
+        }  
+    ]
+  }
