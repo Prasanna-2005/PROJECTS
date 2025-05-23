@@ -1,0 +1,431 @@
+/* CineHive.css - Modern Cinematic Experience */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #8A2BE2; /* Vibrant purple */
+  --primary-light: #B15EFF;
+  --primary-dark: #5D12AF;
+  --neon-glow: 0 0 12px rgba(138, 43, 226, 0.8);
+  --dark: #0B0B13;
+  --darker: #05050A;
+  --light: #f0f0f0;
+  --accent: #00FFCC; /* Teal/mint accent */
+  --accent-glow: 0 0 15px rgba(0, 255, 204, 0.5);
+  --tertiary: #FF9E44; /* Golden orange as third highlight */
+  --tertiary-glow: 0 0 15px rgba(255, 158, 68, 0.5);
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  --gradient-accent: linear-gradient(135deg, var(--accent), #00CCBB);
+  --gradient-mix: linear-gradient(135deg, var(--primary-light), var(--accent));
+  --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--light);
+  background: var(--darker);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.cinehive-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Dynamic Background Canvas */
+.dynamic-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Background Layers */
+.bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.layer-1 {
+  background: radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.07) 0%, transparent 60%);
+  animation: rotateSlow 90s linear infinite;
+}
+
+.layer-2 {
+  background: radial-gradient(circle at 70% 80%, rgba(0, 255, 204, 0.05) 0%, transparent 60%);
+  animation: rotateSlow 120s linear infinite reverse;
+}
+
+.layer-3 {
+  background: 
+    linear-gradient(45deg, transparent 40%, rgba(138, 43, 226, 0.03) 45%, transparent 50%),
+    linear-gradient(135deg, transparent 40%, rgba(0, 255, 204, 0.03) 45%, transparent 50%);
+  background-size: 300% 300%;
+  animation: gradientAnimation 20s ease infinite;
+}
+
+@keyframes rotateSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Navigation */
+.cinehive-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+}
+
+.cinehive-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: flex;
+  cursor: pointer;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.cinehive-logo span {
+  display: inline-block;
+  transition: var(--transition-smooth);
+  transform-style: preserve-3d;
+  position: relative;
+  padding: 0 2px;
+}
+
+.cinehive-logo span:nth-child(odd) {
+  color: var(--light);
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.cinehive-logo span:nth-child(even) {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.cinehive-logo .divider {
+  color: var(--tertiary);
+  text-shadow: 0 0 10px rgba(255, 158, 68, 0.5);
+  margin: 0 6px;
+}
+
+/* Main Content */
+.cinehive-main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 5;
+  perspective: 1000px;
+}
+
+.auth-content {
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  transition: transform 0.3s ease-out;
+}
+
+.main-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.text-effect {
+  display: inline-block;
+  position: relative;
+  animation: glowPulse 4s infinite alternate;
+  text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+.text-effect::before, 
+.text-effect::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  left: -100%;
+
+}
+
+.text-effect::before {
+  top: 0;
+}
+
+.text-effect::after {
+  bottom: 0;
+  animation-delay: 1s;
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    color: var(--light);
+  }
+  25% { 
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 40px rgba(138, 43, 226, 0.3);
+    color: white;
+  }
+  75% { 
+    text-shadow: 0 0 15px rgba(0, 255, 204, 0.6), 0 0 30px rgba(0, 255, 204, 0.3);
+    color: var(--accent);
+  }
+}
+
+@keyframes lineSweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.main-subtitle {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Buttons */
+.auth-actions {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.cine-btn {
+  position: relative;
+  padding: 0.8rem 2rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 50px;
+  z-index: 1;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(5px);
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.login-btn {
+  color: white;
+  background-color: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:hover {
+  background-color: rgba(138, 43, 226, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3), 0 0 20px rgba(138, 43, 226, 0.2);
+}
+
+.login-btn .btn-glow {
+  background: radial-gradient(circle at center, rgba(138, 43, 226, 0.5) 0%, transparent 70%);
+}
+
+.login-btn:hover .btn-glow {
+  opacity: 1;
+}
+
+.register-btn {
+  color: white;
+  background-color: rgba(0, 255, 204, 0.1);
+  border: 1px solid rgba(0, 255, 204, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.register-btn:hover {
+  background-color: rgba(0, 255, 204, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 255, 204, 0.3), 0 0 20px rgba(0, 255, 204, 0.2);
+}
+
+.register-btn .btn-glow {
+  background: radial-gradient(circle at center, rgba(0, 255, 204, 0.5) 0%, transparent 70%);
+}
+
+.register-btn:hover .btn-glow {
+  opacity: 1;
+}
+
+/* Floating Elements */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.3;
+  filter: blur(5px);
+}
+
+.element-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.elem-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  animation: floatSlow 15s infinite alternate ease-in-out;
+}
+
+.elem-1 .element-inner {
+  background: radial-gradient(circle at 30% 30%, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+}
+
+.elem-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 15%;
+  right: 10%;
+  animation: floatSlow 18s infinite alternate-reverse ease-in-out;
+}
+
+.elem-2 .element-inner {
+  background: radial-gradient(circle at 70% 70%, rgba(0, 255, 204, 0.3) 0%, transparent 70%);
+}
+
+.elem-3 {
+  width: 150px;
+  height: 150px;
+  top: 30%;
+  right: 15%;
+  animation: floatSlow 12s infinite alternate ease-in-out;
+}
+
+.elem-3 .element-inner {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 158, 68, 0.2) 0%, transparent 70%);
+}
+
+.elem-4 {
+  width: 100px;
+  height: 100px;
+  bottom: 30%;
+  left: 15%;
+  animation: floatSlow 20s infinite alternate-reverse ease-in-out;
+}
+
+.elem-4 .element-inner {
+  background: radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+}
+
+.elem-5 {
+  width: 250px;
+  height: 250px;
+  top: 60%;
+  left: 50%;
+  animation: floatSlow 25s infinite alternate ease-in-out;
+}
+
+.elem-5 .element-inner {
+  background: radial-gradient(circle at 80% 20%, rgba(0, 255, 204, 0.15) 0%, transparent 70%);
+}
+
+@keyframes floatSlow {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, -15px) rotate(2deg); }
+  50% { transform: translate(-10px, 30px) rotate(-1deg); }
+  75% { transform: translate(-25px, -10px) rotate(3deg); }
+  100% { transform: translate(15px, 20px) rotate(-2deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cinehive-logo {
+    font-size: 2rem;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .main-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .auth-actions {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .cine-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .floating-element {
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage People</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #1e1e2f 0%, #101020 100%);
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background: linear-gradient(90deg, #33334d 0%, #191970 100%);
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 600px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .container:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #55557f;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #7a7ad8;
+      box-shadow: 0 0 10px rgba(122, 122, 216, 0.4);
+      outline: none;
+    }
+
+    .btn-add {
+      background: linear-gradient(90deg, #28a745 0%, #5c9068 100%);
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn-delete {
+      background: linear-gradient(90deg, #a48051 0%, #578e86 100%);
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-delete:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(209, 148, 154, 0.5);
+    }
+
+    li {
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 8px 0;
+      transition: all 0.3s ease;
+    }
+
+    li:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #searchResults div {
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    #searchResults div:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+  <nav
+    class="w-full bg-gradient-to-r from-blue-700 to-indigo-900 text-white px-6 py-4 flex items-center justify-between shadow-lg rounded-b-xl flex-wrap gap-4"
+    style="font-family: 'Inter', sans-serif">
+    <a href="/dashboard" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+      </svg>
+      <span class="text-xl sm:text-2xl font-extrabold">Admin Dashboard</span>
+    </a>
+
+    <a href="/logout" class="bg-red-500 px-5 py-2 rounded-lg shadow-md hover:bg-red-600 hover:scale-105 transition-all">
+      Logout
+    </a>
+  </nav>
+
+
+  <!-- Main Container -->
+  <div class="flex items-center justify-center py-10">
+    <div class="max-w-xl w-full p-6 rounded-xl bg-white/10 backdrop-blur-md shadow-xl">
+      <h2 class="text-2xl font-bold text-gray-200 mb-4 tracking-tight flex items-center gap-2">
+        👪 <span>Manage Crew/Cast People</span>
+      </h2>
+
+      <!-- Add Person -->
+      <div class="flex gap-3 mb-6">
+        <input id="personName" type="text" placeholder="Enter person name"
+          class="w-full px-4 py-2 border border-gray-500 rounded-lg bg-white/20 text-gray-200 placeholder-gray-400 focus:ring focus:ring-indigo-300 focus:outline-none transition-all" />
+        <button onclick="addPerson()"
+          class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-all shadow-md">
+          ➕ Add
+        </button>
+      </div>
+
+      <!-- Search -->
+      <div class="mb-6">
+        <label for="searchPerson" class="block text-sm font-medium text-gray-300 mb-2">Search Person:</label>
+        <div class="flex gap-3">
+          <input id="searchPerson" type="text" placeholder="Search by name..."
+            class="w-full px-4 py-2 border border-gray-500 rounded-lg bg-white/20 text-gray-200 placeholder-gray-400 focus:ring focus:ring-indigo-300 focus:outline-none transition-all"
+            oninput="searchPeople()" />
+        </div>
+        <div id="searchResults" class="mt-2 bg-gray-700/30 backdrop-blur-lg rounded-lg p-2 shadow-inner hidden"></div>
+      </div>
+
+      <!-- People List -->
+      <h3 class="text-lg font-semibold text-gray-300 mb-3">All People</h3>
+      <ul id="peopleList" class="mt-2 space-y-2">
+        <% people.forEach(person=> { %>
+          <li
+            class="flex justify-between items-center p-3 bg-gray-700/50 rounded-lg shadow-sm hover:bg-gray-600 transition-all">
+            <span class="text-gray-200 font-medium">
+              <%= person.name %>
+            </span>
+            <button onclick="deletePerson(<%= person.id %>)"
+              class="bg-teal-500 hover:bg-teal-600 text-white px-3 py-1 rounded shadow-md transition-all">
+              Remove
+            </button>
+          </li>
+          <% }); %>
+      </ul>
+    </div>
+  </div>
+</body>
+
+
+<script>
+  async function fetchPeople() {
+    try {
+      window.location.reload();
+    } catch (error) {
+      console.error("Error fetching people:", error);
+    }
+  }
+
+  async function addPerson() {
+    const name = document.getElementById("personName").value.trim();
+    if (!name) return alert("Enter a person name!");
+
+    try {
+      const res = await fetch("/people/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name }),
+      });
+
+      if (res.ok) {
+        document.getElementById("personName").value = "";
+        fetchPeople();
+      } else {
+        const error = await res.json();
+        alert(error.error || "Failed to add person! They might already exist.");
+      }
+    } catch (error) {
+      console.error("Error adding person:", error);
+      alert("An error occurred while adding the person.");
+    }
+  }
+
+  async function deletePerson(id) {
+    if (!confirm("Are you sure? This may cause issues if this person is associated with movies.")) return;
+
+    try {
+      const res = await fetch(`/people/delete/${id}`, { method: "DELETE" });
+      if (res.ok) {
+        fetchPeople();
+      } else {
+        const error = await res.json();
+        alert(error.error || "Failed to delete person!");
+      }
+    } catch (error) {
+      console.error("Error deleting person:", error);
+      alert("An error occurred while deleting the person.");
+    }
+  }
+
+  let searchTimeout;
+  async function searchPeople() {
+    const query = document.getElementById("searchPerson").value.trim();
+    const resultsContainer = document.getElementById("searchResults");
+
+    clearTimeout(searchTimeout);
+
+    if (!query) {
+      resultsContainer.classList.add("hidden");
+      return;
+    }
+
+    searchTimeout = setTimeout(async () => {
+      try {
+        const res = await fetch(`/people/search?query=${encodeURIComponent(query)}`);
+        if (res.ok) {
+          const people = await res.json();
+
+          if (people.length > 0) {
+            resultsContainer.innerHTML = people
+              .map(
+                (person) => `
+                  <div class="flex justify-between items-center p-2 rounded">
+                    <span class="text-gray-800">${person.name}</span>
+                    <div>
+                      <button 
+                        onclick="deletePerson(${person.id})" 
+                        class="btn-delete text-white px-2 py-1 rounded text-xs">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                `
+              )
+              .join("");
+            resultsContainer.classList.remove("hidden");
+          } else {
+            resultsContainer.innerHTML = '<div class="p-2 text-gray-600">No results found</div>';
+            resultsContainer.classList.remove("hidden");
+          }
+        }
+      } catch (error) {
+        console.error("Error searching people:", error);
+      }
+    }, 300);
+  }
+</script>
+</body>
+
+</html>

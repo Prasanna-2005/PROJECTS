@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Movie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      background-attachment: fixed;
+    }
+
+    .glassy-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+    }
+
+    .glassy-nav {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .cast-entry {
+      background: rgba(30, 58, 138, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    input,
+    select,
+    textarea {
+      background: rgba(15, 23, 42, 0.5) !important;
+      color: white !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    @media (max-width: 768px) {
+      .responsive-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .responsive-padding {
+        padding: 1.5rem !important;
+      }
+
+      .responsive-text {
+        font-size: 1.5rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen">
+  <nav class="glassy-nav text-white p-4 flex justify-between items-center shadow-lg w-full z-10">
+    <a href="/dashboard" class="text-2xl font-bold flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+      </svg>
+      Admin Dashboard
+    </a>
+    <div class="flex space-x-6">
+      <a href="/view-movies" class="hover:text-blue-300 transition flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        View Movies
+      </a>
+      <a href="/logout" class="hover:text-blue-300 transition flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+        </svg>
+        Logout
+      </a>
+    </div>
+  </nav>
+
+  <div class="max-w-6xl mx-auto glassy-card p-8 rounded-2xl my-20 responsive-padding">
+    <h2 class="text-3xl font-bold text-white mb-8 pb-4 border-b border-blue-900 responsive-text">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline mr-2" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      </svg>
+      Edit Movie: <%= movie.title %>
+    </h2>
+
+    <form id="movieForm" action="/update-movie/<%= movie.id %>" method="POST" class="space-y-8">
+      <!-- Movie Basic Details -->
+      <div class="space-y-6">
+        <h3 class="text-xl font-semibold text-blue-300 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Movie Details
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 responsive-grid">
+          <div>
+            <label for="title" class="block text-blue-100 font-medium mb-2">Movie Title<span
+                class="text-red-400 ml-1">*</span></label>
+            <input type="text" id="title" name="title" value="<%= movie.title %>" required
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+
+          <div>
+            <label for="rating" class="block text-blue-100 font-medium mb-2">Average Rating<span
+                class="text-red-400 ml-1">*</span></label>
+            <input type="number" id="rating" name="rating" value="<%= movie.average_rating %>" min="0" max="10"
+              step="0.1" required
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+
+          <div>
+            <label for="release_year" class="block text-blue-100 font-medium mb-2">Release Year<span
+                class="text-red-400 ml-1">*</span></label>
+            <input type="number" id="release_year" name="release_year" value="<%= movie.release_year %>" min="1880"
+              max="2099" required
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+
+          <div>
+            <label for="runtime" class="block text-blue-100 font-medium mb-2">Runtime (minutes)</label>
+            <input type="number" id="runtime" name="runtime" value="<%= movie.runtime || '' %>" min="1"
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+
+          <div>
+            <label for="language" class="block text-blue-100 font-medium mb-2">Language</label>
+            <input type="text" id="language" name="language" value="<%= movie.language || '' %>"
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+
+          <div>
+            <label for="country" class="block text-blue-100 font-medium mb-2">Country</label>
+            <input type="text" id="country" name="country" value="<%= movie.country || '' %>"
+              class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Synopsis -->
+      <div>
+        <label for="synopsis" class="block text-blue-100 font-medium mb-2">Synopsis</label>
+        <textarea id="synopsis" name="synopsis" rows="4"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"><%= movie.synopsis || '' %></textarea>
+      </div>
+
+      <!-- Genres -->
+      <div>
+        <h3 class="text-xl font-semibold text-blue-300 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+          </svg>
+          Genres<span class="text-red-400 ml-1">*</span>
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <% genres.forEach(genre=> { %>
+            <div class="flex items-center">
+              <input type="checkbox" id="genre-<%= genre.id %>" name="genres" value="<%= genre.id %>"
+                class="mr-2 h-5 w-5 text-blue-500 rounded focus:ring-blue-400" <% if (movieGenres.includes(genre.id)) {
+                %>checked<% } %>
+                />
+                <label for="genre-<%= genre.id %>" class="text-blue-100">
+                  <%= genre.name %>
+                </label>
+            </div>
+            <% }); %>
+        </div>
+      </div>
+
+      <!-- Cast & Crew -->
+      <div>
+        <h3 class="text-xl font-semibold text-blue-300 mb-4 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Cast & Crew
+        </h3>
+        <div id="castContainer" class="space-y-4">
+          <% movieCasts.forEach((cast, index)=> { %>
+            <div class="cast-entry p-5 rounded-lg space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 responsive-grid">
+                <div>
+                  <label class="block text-blue-100 font-medium mb-2">Person</label>
+                  <select name="casts[<%= index %>][person_id]" required
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                    <option value="">Select a person</option>
+                    <% people.forEach(person=> { %>
+                      <option value="<%= person.id %>" <% if (person.id===cast.person_id) { %>selected<% } %>><%=
+                            person.name %>
+                      </option>
+                      <% }); %>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-blue-100 font-medium mb-2">Role</label>
+                  <select name="casts[<%= index %>][role]" required
+                    class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition role-select">
+                    <option value="actor" <% if (cast.role==='actor' ) { %>selected<% } %>>Actor</option>
+                    <option value="actress" <% if (cast.role==='actress' ) { %>selected<% } %>>Actress</option>
+                    <option value="director" <% if (cast.role==='director' ) { %>selected<% } %>>Director</option>
+                    <option value="writer" <% if (cast.role==='writer' ) { %>selected<% } %>>Writer</option>
+                    <option value="producer" <% if (cast.role==='producer' ) { %>selected<% } %>>Producer</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-blue-100 font-medium mb-2">Character Name</label>
+                  <input type="text" name="casts[<%= index %>][character_name]" value="<%= cast.character_name || '' %>"
+                    placeholder="<%= (cast.role === 'actor' || cast.role === 'actress') ? 'Character name (required)' : 'Only for actors/actresses' %>"
+                    <%=(cast.role==='actor' || cast.role==='actress' ) ? 'required' : '' %>
+                  class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500
+                  transition"
+                  />
+                </div>
+              </div>
+              <button type="button"
+                class="remove-cast text-red-400 hover:text-red-300 text-sm transition flex items-center"
+                <%=movieCasts.length> 1 ? '' :
+                'style="display: none"' %>
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                Remove
+              </button>
+            </div>
+            <% }); %>
+
+              <% if (movieCasts.length===0) { %>
+                <!-- Template cast entry if no casts exist -->
+                <div class="cast-entry p-5 rounded-lg space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 responsive-grid">
+                    <div>
+                      <label class="block text-blue-100 font-medium mb-2">Person</label>
+                      <select name="casts[0][person_id]" required
+                        class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        <option value="">Select a person</option>
+                        <% people.forEach(person=> { %>
+                          <option value="<%= person.id %>">
+                            <%= person.name %>
+                          </option>
+                          <% }); %>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label class="block text-blue-100 font-medium mb-2">Role</label>
+                      <select name="casts[0][role]" required
+                        class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition role-select">
+                        <option value="actor">Actor</option>
+                        <option value="actress">Actress</option>
+                        <option value="director">Director</option>
+                        <option value="writer">Writer</option>
+                        <option value="producer">Producer</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label class="block text-blue-100 font-medium mb-2">Character Name</label>
+                      <input type="text" name="casts[0][character_name]" placeholder="Only for actors/actresses"
+                        class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+                    </div>
+                  </div>
+                  <button type="button"
+                    class="remove-cast text-red-400 hover:text-red-300 text-sm transition flex items-center"
+                    style="display: none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    Remove
+                  </button>
+                </div>
+                <% } %>
+        </div>
+
+        <button type="button" id="addCastBtn"
+          class="mt-4 px-5 py-2.5 bg-blue-800 hover:bg-blue-700 text-white rounded-lg transition flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          Add Cast/Crew Member
+        </button>
+      </div>
+
+
+      <div class="flex space-x-4 pt-6 border-t border-blue-900">
+        <button type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-6 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-900 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          Update Movie
+        </button>
+        <a href="/view-movies"
+          class="w-full bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-blue-900 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const castContainer = document.getElementById("castContainer");
+      const addCastBtn = document.getElementById("addCastBtn");
+      let castCount = <%= movieCasts.length || 1 %>;
+
+      // File input handlers
+      document.getElementById('gridImgInput').addEventListener('change', function (e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+        document.getElementById('gridImgName').textContent = fileName;
+      });
+
+      document.getElementById('posterImgInput').addEventListener('change', function (e) {
+        const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+        document.getElementById('posterImgName').textContent = fileName;
+      });
+
+      // Show remove button for the first cast entry if there's more than one
+      if (document.querySelectorAll(".cast-entry").length > 1) {
+        document.querySelectorAll(".remove-cast").forEach(btn => {
+          btn.style.display = "flex";
+        });
+      }
+
+      addCastBtn.addEventListener("click", function () {
+        // Clone the first cast entry
+        const castEntryTemplate = document
+          .querySelector(".cast-entry")
+          .cloneNode(true);
+
+        // Update the input names
+        const inputs = castEntryTemplate.querySelectorAll("select, input");
+        inputs.forEach((input) => {
+          const currentName = input.getAttribute("name");
+          const newName = currentName.replace(/\[\d+\]/, `[${castCount}]`);
+          input.setAttribute("name", newName);
+
+          // Clear any values
+          if (input.tagName === "INPUT") {
+            input.value = "";
+          } else if (input.tagName === "SELECT") {
+            input.selectedIndex = 0;
+          }
+        });
+
+        // Show the remove button
+        const removeBtn = castEntryTemplate.querySelector(".remove-cast");
+        removeBtn.style.display = "flex";
+
+        // Add event listener to remove button
+        removeBtn.addEventListener("click", function () {
+          castEntryTemplate.remove();
+          updateCastIndices(); // Update indices after removal
+        });
+
+        // Add the new cast entry to the container
+        castContainer.appendChild(castEntryTemplate);
+        castCount++;
+      });
+
+      // Add event listener to the remove buttons
+      document.querySelectorAll(".remove-cast").forEach(button => {
+        button.addEventListener("click", function (e) {
+          if (document.querySelectorAll(".cast-entry").length > 1) {
+            e.target.closest(".cast-entry").remove();
+            updateCastIndices(); // Update indices after removal
+          }
+        });
+      });
+
+      // Function to update all cast indices after removal
+      function updateCastIndices() {
+        const castEntries = document.querySelectorAll(".cast-entry");
+        castEntries.forEach((entry, index) => {
+          const inputs = entry.querySelectorAll("select, input");
+          inputs.forEach((input) => {
+            const currentName = input.getAttribute("name");
+            const newName = currentName.replace(/\[\d+\]/, `[${index}]`);
+            input.setAttribute("name", newName);
+          });
+        });
+      }
+
+      // Add change listener for role selection
+      document.addEventListener("change", function (e) {
+        if (e.target.classList.contains('role-select') ||
+          (e.target.name && e.target.name.includes("[role]"))) {
+          // Get the character name input from the same cast entry
+          const castEntry = e.target.closest(".cast-entry");
+          const characterInput = castEntry.querySelector(
+            'input[name$="[character_name]"]'
+          );
+
+          // Only required for actors/actresses
+          if (e.target.value === "actor" || e.target.value === "actress") {
+            characterInput.setAttribute(
+              "placeholder",
+              "Character name (required)"
+            );
+            characterInput.setAttribute("required", "required");
+          } else {
+            characterInput.setAttribute(
+              "placeholder",
+              "Only for actors/actresses"
+            );
+            characterInput.removeAttribute("required");
+            characterInput.value = "";
+          }
+        }
+      });
+
+      // Form validation
+      document
+        .getElementById("movieForm")
+        .addEventListener("submit", function (e) {
+          const genreCheckboxes = document.querySelectorAll(
+            'input[name="genres"]:checked'
+          );
+          if (genreCheckboxes.length === 0) {
+            e.preventDefault();
+            alert("Please select at least one genre");
+            return;
+          }
+
+          // Validate at least one cast member
+          const castEntries = document.querySelectorAll(".cast-entry");
+          let validCast = false;
+
+          castEntries.forEach((entry) => {
+            const personSelect = entry.querySelector(
+              'select[name$="[person_id]"]'
+            );
+            const roleSelect = entry.querySelector('select[name$="[role]"]');
+
+            if (personSelect.value && roleSelect.value) {
+              // If role is actor/actress, character name is required
+              if (
+                roleSelect.value === "actor" ||
+                roleSelect.value === "actress"
+              ) {
+                const characterInput = entry.querySelector(
+                  'input[name$="[character_name]"]'
+                );
+                if (characterInput.value.trim()) {
+                  validCast = true;
+                }
+              } else {
+                validCast = true;
+              }
+            }
+          });
+
+          if (!validCast) {
+            e.preventDefault();
+            alert("Please add at least one valid cast or crew member");
+          }
+        });
+    });
+  </script>
+</body>
+
+</html>
