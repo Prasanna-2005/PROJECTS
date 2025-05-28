@@ -2,7 +2,7 @@
 .netflix-login-container {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-              url('/home/prasanna/Desktop/frontend-cinehive/public/Vijay_back.jpg') no-repeat center center;
+       url('https://res.cloudinary.com/dikdgcqfk/image/upload/v1748443839/Vijay_back_ijjxm9.jpg') no-repeat center center;
   background-size: cover;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: white;

@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(cors({
-  origin:['https://cine-hive-tvk.netlify.app','http://localhost:3000',"https://cine-hive-frontend.onrender.com/"],
+  origin:['https://cine-hive-tvk.netlify.app','http://localhost:3000',"https://cinehive-frontend.onrender.com"],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS','PATCH']

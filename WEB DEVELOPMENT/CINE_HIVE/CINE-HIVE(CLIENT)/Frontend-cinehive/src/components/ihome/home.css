@@ -20,6 +20,8 @@
   --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +32,7 @@ body {
   font-family: 'Rajdhani', sans-serif;
   color: var(--light);
   background: var(--darker);
-  overflow: hidden;
+ 
   height: 100vh;
   width: 100vw;
 }
